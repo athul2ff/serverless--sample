@@ -1,0 +1,31 @@
+service: serverlessproject
+
+
+frameworkVersion: '3'
+
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+plugins:
+    - serverless-offline
+
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: test
+          method: get
+          cors:
+            origin: "*"
+            headers: 
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: false    
